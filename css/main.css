@@ -1,0 +1,42 @@
+.outbox{
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex:1;
+    border-color:aliceblue;
+    border-width: 1px;
+    border-style:solid;
+    border-left-color:white;
+    border-right-color: white;
+    background-color: white;
+    padding-left: 0%;
+    margin: 0%;
+    margin-left: 0px
+}
+#amazing{
+    width: 200px;
+    background: #00e70e;
+    margin-right: 200px;
+    float: right
+}
+.inbox{
+    border-block: black;
+    margin-left: 200px;
+    font-size: 75%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #00e70e;
+    white-space: nowrap
+}
+.inbox1{
+    border-block: black;
+    margin-left: 20px;
+    font-size: 75%;
+    white-space: nowrap
+}
+.inbox2{
+    border-block: black;
+    margin-left: 20px;
+    margin-right: 400px;
+    white-space: nowrap
+}
