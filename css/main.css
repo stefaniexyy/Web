@@ -9,17 +9,35 @@
     border-style:solid;
     border-left-color:white;
     border-right-color: white;
-    padding-left: 0%;
-    margin: 0%;
-    margin-left: 0px;
-
+    padding-left: 0%
+}
+.outbox1{
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex:1;
+    border-color:aliceblue;
+    border-width: 1px;
+    border-style:solid;
+    border-left-color:white;
+    border-right-color: white;
+    padding-left: 0%
 }
 #amazing{
     width: 40px;
-    background: #db4641;
+    background: #f3302a;
     margin-right: 200px;
     justify-content:center;
     color: white;
+    float: right
+}
+#amazing1{
+    width: 40px;
+    background: #f3302a;
+    margin-right: 5px;
+    justify-content:center;
+    color: white  ;
     float: right
 }
 #background{
@@ -27,11 +45,17 @@
 }
 .inbox{
     border-block: black;
-    margin-left: 200px;
-    font-size: 75%;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    color: white;
-    white-space: nowrap
+    border: black;
+    white-space: nowrap;
+    margin-left: 5px;
+    margin-right: 5px
+
+}
+#border_width{
+    border-width:1px;
+    border-color: blue;
+    background:#f3302a
 }
 .inbox1{
     border-block: black;
@@ -40,9 +64,45 @@
     color: white;
     white-space: nowrap
 }
-.inbox2{
-    border-block: black;
-    margin-left: 20px;
-    margin-right: 400px;
-    white-space: nowrap
+#search_bar{
+    margin: 0 auto;
+    width: 500px;
+    color:black;
+    clear: both;
+    font-size:12px;
+}
+#menu{
+    list-style: none;
+    display:balock;
+    padding: 0 5;
+    margin: 0;
+    float:left
+}
+.container {    
+    height: 70px;   
+    width: 800px;    
+    margin: 0 auto
+}
+.parent {   
+    position: relative
+}
+.search {   
+    width: 400px;    
+    height: 40px;    
+    border-radius: 18px;    
+    outline: none;    
+    border: 1px solid #ccc;    
+    padding-left: 20px;    
+    position: absolute;
+}
+.btn {  
+    height: 25px;    
+    width: 25px;    
+    position: absolute;   
+    background: url("../res/search.png") no-repeat ;    
+    top: 10;    
+    left: 365px;    
+    border: none;    
+    outline: none;    
+    cursor: pointer
 }
