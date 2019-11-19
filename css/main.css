@@ -66,6 +66,16 @@
     margin: 0 1 0 0;
     float:left;
 }
+#menu_nav{
+    list-style: none;
+    display:balock;
+    padding: 0 5;
+    margin: 0 1 0 0;
+    float:left;
+    font-size: 75%;
+    color: white;
+    background: #1480ec;
+}
 #menu1{
     list-style: none;
     padding: 0 5;
@@ -114,4 +124,11 @@
     border: none;    
     outline: none;    
     cursor: pointer
+}
+footer{
+    background-color: #1480ec;
+    color: white;
+    font-size: 14px;
+    text-align: center; 
+    font-size: 75%;
 }
