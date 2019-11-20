@@ -1,4 +1,16 @@
-#aero_backgroud{
-    background:url('../res/b757/b757.jpg') no-repeat center 0;
-
+.table_main{
+    margin-left: 20px;
+    margin-right:20px;
+    border: thin solid bottom;
+    font-size: 75%;
+    border-spacing: 0px;
+    padding-right: 500px;
+}
+.td_main{
+    padding-right: 500px;
+    border: thin dotted gray;
+}
+.table_internal{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 75%;
 }
