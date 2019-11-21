@@ -19,7 +19,7 @@
     flex-direction: column-reverse;
     justify-content:start;
     height:600px;
-    width:1920px;
+    width:100%;
 }
 .ax{
     display: flex;
@@ -38,4 +38,9 @@
     color:#3277bd;
     height:50px;
     background: white;
+}
+#href_style{
+    color:white;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 80%;
 }
