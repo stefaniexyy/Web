@@ -133,21 +133,3 @@ footer{
     font-size: 75%;
 }
 
-.aero_outbox{
-    display: flex;
-    display: -webkit-flex;
-    flex-direction:row-reverse;
-    justify-content: flex-end;
-    flex:1;
-}
-.aero_outbox1{
-    display: flex;
-    display: -webkit-flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    flex:1;
-    background: white;
-    height:50px;
-    color:#3277bd;
-    font-size: 175%;
-}
