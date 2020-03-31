@@ -3,66 +3,60 @@ import socket
 import sys
 import re
 from multiprocessing import Process
-
+__author__='Willy Xi'
+"""
+Version 0.1 Build2
+20200330
+"""
+def Create_Staic_Page(file_name):
+    file_name=file_name if file_name !='/' else '/main.html'
+    file_path=""
+    response_start_line=""
+    response_headers=""
+    response_body=" "
+    if re.search(r'jpge$|jpg$|png$|bmp$|webp$|ico$',file_name,re.M|re.I):
+        response_start_line = "HTTP/1.1 200 OK\r\nContent-Type: image/jpg\r\n\r\n"
+        file_path='../src'+file_name
+    elif re.search(r'css$',file_name,re.M|re.I):
+        response_start_line = "HTTP/1.1 200 OK\r\nContent-Type: text/css\r\n\r\n"
+        file_path='../src'+file_name
+    elif re.search(r'html|htm$',file_name,re.M|re.I):
+        response_start_line = "HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n\r\n"
+        file_path='../src/html'+file_name
+    else:
+        print('ELSE:'+file_path)
+    try:
+        file=open(file_path,'rb')
+        response_body=file.read()
+        file.close()
+    except IOError:
+        if re.search(r'html|htm$',file_name,re.M|re.I):
+            response_start_line = "HTTP/1.1 404 Not Found\r\nContent-Type: text/html\r\n\r\n"
+            response_body=bytes('<h1>Error 404 Page Lost</h1>',"gb2312")
+        else:
+            print("IO ERROR can not find file:"+file_path)
+    response=""
+    try:
+        response = bytes(response_start_line,"gb2312") + response_body
+    except TypeError:
+        print('TypeError:'+response_start_line)
+    return response
 
 def handle_client(client_socket):
     """
     处理客户端请求
-    """
-    
+    """   
     response_headers = ""
     request_data = client_socket.recv(1024)
     request_Info=re.search(r'^b\'(.+) (\/[\.\/\w\W\d]*) HTTP\/',str(request_data),re.M|re.I)
     try:
         request_type=request_Info.group(1)
         request_file=request_Info.group(2)
-        print('request_file:'+request_file)
     except AttributeError:
         print(request_Info)
-    if re.search(r'jpge$|jpg$|png$|bmp$|webp$|ico$;',request_file,re.M|re.I):
-        file=open('../src'+request_file,'rb')
-        data=file.read()
-        response_body = data
-        response_start_line = "HTTP/1.1 200 OK\r\nContent-Type: image/jpg\r\n\r\n"
-        client_socket.send(bytes(response_start_line,"gb2312")+data)
-        client_socket.close()
-        file.close()
-    elif re.search(r'css$',request_file,re.M|re.I):
-        file=open('../src'+request_file,'r',encoding='gb2312')
-        data=file.read()
-        response_body = data
-        response_start_line = "HTTP/1.1 200 OK\r\nContent-Type: text/css\r\n\r\n"
-        response = response_start_line + response_headers+ "\r\n" + response_body
-        client_socket.send(bytes(response, "gb2312"))
-        client_socket.close()
-        file.close()
-    elif re.search(r'html|htm$',request_file,re.M|re.I) and not re.search(r'main.html',request_file,re.M|re.I):
-        print('../src/html'+request_file)
-        file=open('../src/html/b757.html','rb')
-        data=file.read()
-        response_body = data
-        response_start_line = "HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n\r\n"
-        response =bytes(response_start_line + response_headers+ "\r\n",'gb2312') + response_body
-        client_socket.send(response)
-        client_socket.close()
-        file.close()
-    else:
-        file=open('../src/html/main.html','r',encoding='gb2312')
-        data=file.read()
-        response_body = data
-        response_start_line = "HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n\r\n"
-        response = response_start_line + response_headers+ "\r\n" + response_body
-        client_socket.send(bytes(response, "gb2312"))
-        client_socket.close()
-        file.close()
-    #printprint("request data:", request_data)
-    # 构造响应数据
-    
-    #response_body = "<h1>Python HTTP Test</h1>"
-    
-    # 向客户端返回响应数据
-    #client_socket.send(bytes(response_css, "utf-8"))
-    # 关闭客户端连接
+    client_socket.send(Create_Staic_Page(request_file))
+    client_socket.close()
+
 if __name__ == "__main__":
     try:
         server_socket = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
