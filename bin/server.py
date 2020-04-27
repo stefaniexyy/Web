@@ -34,7 +34,8 @@ if __name__ == "__main__":
         while True:
             client_socket, client_address = server_socket.accept()
             print("[%s, %s]用户连接上了" % client_address)
-            handle_client_process = Process(target=WebServer.handle_client, args=(client_socket,))
+            a=WebServer()#记得要先初始化示例，不要用perl的写法
+            handle_client_process = Process(target=a.handle_client, args=(client_socket,))
             handle_client_process.start()
             client_socket.close()
     except KeyboardInterrupt:
