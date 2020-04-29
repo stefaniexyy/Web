@@ -41,6 +41,11 @@
     text-align: center;
     text-decoration: none;
 }
+#title_small:hover{
+    color: grey;
+    text-align: center;
+    text-decoration: none;  
+}
 #title title1{
     font-family:zh_title;
     font-size: 70px;
@@ -108,7 +113,7 @@
 }
 #box_conetnt_in{
     width:auto;
-    height: 350px;
+    height: 400px;
     margin: 5px 0 5px 0;
     background-color: white;
 }
@@ -123,31 +128,7 @@
     justify-content: flex-start;
     flex: 1 1 auto; 
 }
-.box_content_title_left {
-    display: table-cell;
-}
-.box_content_title_right{
-    display: table-cell;
-    vertical-align: bottom;
-}
 
-#box_content_title_left{
-    margin-left: 30px;
-    width: 400px;
-    height: 50px;
-    font-size: 40px;
-    font-family: Microsoft JhengHei;
-}
-#box_content_title_right{
-    width: 800px;
-    height: 50px;
-    font-size: 15px;
-    line-height:1px;
-    font-family: Arial, Helvetica, sans-serif;
-    text-align: right;
-    display: table-cell;
-    vertical-align: bottom;
-}
 #box_content_mid{
     margin-left: 0px;
     width: auto;
