@@ -134,3 +134,14 @@
     width: auto;
     height: 300px;
 }
+#like_botton{
+    background: url('../res/like.png');
+    height:19px;
+    width: 19px;
+    border: 0;
+    outline:none;
+}
+#like_count{
+    font-size: 14px;
+    font-family: Microsoft Yahei;
+}

@@ -5,6 +5,7 @@
             <title>Technical Test Field-A Blog For Stefaniexyy</title>
     </head>
     <body>
+        <script src="../js/onclick.js"></script>
         <div class="box_out_title" id="head">
             <div class="box_in_title_K" id="title" >
                 <div class="box_in_title_mid">
@@ -35,11 +36,11 @@
                         <div style="position:absolute; left:0;bottom: 0;font-size: 40px;font-family: Microsoft JhengHei;">
                         魔幻智利，游行见闻
                         </div>
-                        <div style="position:absolute; right:0;bottom: 0;line-height:1px;">
-                        <p style="color:grey">
+                        <div style="position:absolute; right:0;bottom: 0;line-height:1px;font-family: Microsoft Yahei">
+                        <p style="color:grey ;">
                             0 Comments
                         </p>
-                        <p >
+                        <p  >
                             2020-04-27
                         </p>
                         </div>
@@ -49,11 +50,10 @@
                     </div>
                     <div class="box_content_title" style="position:relative;">
                         <div id="box_content_tail_left;font-size: 20px;" >
-                            <div style="position:absolute;left:10;bottom: 20;">
-                                <input name='imgbtn' type="image" src='../res/like.png' height='18px' border="0">
-                                <!--<button style="background: url('../res/like.png');height:18px;width: 18px;" ></button>-->
+                            <div style="position:absolute;left:10;bottom: 20;" id="demon">                               
+                                <button onclick="click_like()" id="like_botton" ></button>
                             </div>
-                            <div style="position:absolute;left:35;bottom: 18;">
+                            <div style="position:absolute;left:35;bottom: 18;" id="like_count">
                                 0 Like
                             </div>
                         </div>
