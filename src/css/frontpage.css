@@ -145,3 +145,16 @@
     font-size: 14px;
     font-family: Microsoft Yahei;
 }
+.box_icon{
+    margin:10px 0px 10px 100px
+}
+#seach_botton{
+    background: url('../res/search.png');
+    height:16px;
+    width: 16px;
+    border: 0;
+    outline:none;
+    position:absolute;
+    left:160px;
+    bottom: 19;
+}
