@@ -1,6 +1,8 @@
 #!/usr/bin/python
 import socket
 import sys
+import json
+
 sys.path.append('./lib/')
 from multiprocessing import Process
 from xyy.webserver.webserivce import  WebServer
@@ -26,6 +28,9 @@ Version 0.1 Build2
 #    return [body.encode('utf-8')]
 
 if __name__ == "__main__":
+    with open('../config/.basic.json') as basic_cfg_file:
+        basic_cfg=json.load(basic_cfg_file)
+    
     try:
         server_socket = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
         server_socket.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR,1) 
@@ -34,7 +39,7 @@ if __name__ == "__main__":
         while True:
             client_socket, client_address = server_socket.accept()
             print("[%s, %s]用户连接上了" % client_address)
-            a=WebServer()#记得要先初始化示例，不要用perl的写法
+            a=WebServer(basic_cfg['loglevel'])#记得要先初始化示例，不要用perl的写法,也别忘了()
             handle_client_process = Process(target=a.handle_client, args=(client_socket,))
             handle_client_process.start()
             client_socket.close()
