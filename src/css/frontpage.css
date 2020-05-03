@@ -158,3 +158,57 @@
     left:160px;
     bottom: 19;
 }
+.link_bar{
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+#link_bar{
+    height:40px;
+    width: 200px;
+    margin-left: 100px;
+    margin-bottom: 10px;
+}
+#link_bar_mini{
+    margin-right: 5px;
+}
+#name{
+    font-family: Microsoft JhengHei;
+    margin-left: 100px;
+    margin-bottom: 4px;
+}
+.login_bar_out{
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: cloumn;
+    justify-content: flex-start;
+}
+#login_bar_out{
+    width: 220px;
+    border: 1px;
+    border-style: solid;
+    margin-left: 80px;
+    height:auto
+}
+#login_bar{
+    margin-right: 20px;
+    margin-left:20px;
+    height: 20px;
+    margin-top: 10px;
+    width: auto;
+
+}
+#login_botton{
+    height:20px;
+    width: 16px;
+    background: cornflowerblue;
+    border: 2;
+    outline:none;
+    color: white;
+    margin-right: 40px;
+    margin-left:0px;
+    margin-bottom: 5px;
+    width: 180px;
+    font-size: 10px;
+}
