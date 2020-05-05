@@ -4,7 +4,7 @@
     flex-direction: column;
     justify-content: flex-start;
     flex: 1 1 auto;
-    width: auto;
+    width: 1510px;
     height:300px ;
 }
 .box_in_title{
@@ -91,20 +91,19 @@
     flex-direction: column;
     justify-content: flex-start;
 }
-#box_left{
-    margin: 20px 20px 20px 0;
-    width: 1440px;
-    background-color: #DEDEDE;
-}
+
 .box_right{
     display: flex;
     display: -webkit-flex;
-    flex: 1 1 auto;
     flex-direction: column;
-    justify-content: flex-start;
 }
-#box_rigth{
-    widows: 20%;
+#box_right{
+    width: 356px;
+}
+#box_left{
+    margin: 20px 0px 20px 0;
+    width: 1160 px;
+    background-color: #DEDEDE;
 }
 .box_conetnt_in{
     display: flex;
@@ -118,7 +117,41 @@
     margin: 5px 0 5px 0;
     background-color: white;
 }
-.box_content_mid{
+.box_conetnt_page{
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+    flex: 1 1 auto;
+    justify-content: center;
+    
+}
+#box_conetnt_page{
+    width:auto;
+    height: 20px;
+    margin: 5px 0 5px 0;
+    background-color: white;
+    font-size: 13px;
+    font-family: Microsoft JhengHei;
+}
+.box_page_in{
+    margin: 0px 10px 10px 0px; 
+    text-align: center;
+
+}
+#box_page_in{
+    width:16px;
+    height: 16px;
+    border: 1px;
+    border-style: solid; 
+
+}
+#box_next_page_in{
+    width:56px;
+    height: 16px;
+    border: 1px;
+    border-style: solid;       
+}
+.box_content_midpage{
     display: table-cell;
     vertical-align: middle;   
 }
@@ -147,7 +180,7 @@
     font-family: Microsoft Yahei;
 }
 .box_icon{
-    margin:10px 0px 10px 100px
+    margin:10px 0px 10px 136px
 }
 #seach_botton{
     background: url('../res/search.png');
@@ -168,7 +201,7 @@
 #link_bar{
     height:40px;
     width: 200px;
-    margin-left: 100px;
+    margin-left: 136px;
     margin-bottom: 10px;
 }
 #link_bar_mini{
@@ -176,7 +209,7 @@
 }
 #name{
     font-family: Microsoft JhengHei;
-    margin-left: 100px;
+    margin-left: 136px;
     margin-bottom: 4px;
 }
 .login_bar_out{
@@ -186,10 +219,10 @@
     justify-content: flex-start;
 }
 #login_bar_out{
-    width: 220px;
+    width: 200px;
     border: 1px;
     border-style: solid;
-    margin-left: 80px;
+    margin-left: 126px;
     height:auto
 }
 #login_bar{
@@ -210,12 +243,13 @@
     margin-right: 40px;
     margin-left:0px;
     margin-bottom: 5px;
-    width: 180px;
+    width: 160px;
     font-size: 10px;
 }
 #tail{
-    background: dodgerblue;
-    margin: 0 auto
+    background: #1e90ff;
+    margin: 0 0 0 0;
+    width: 1510px;
 }
 #tail_out{   
     margin: 0 auto
@@ -224,7 +258,6 @@
     display: flex;
     display: -webkit-flex;
     flex-direction: row;
-    justify-content: flex-start;
     flex: 1 1 auto;
     justify-content: center;
 }
