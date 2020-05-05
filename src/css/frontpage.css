@@ -252,7 +252,8 @@
     width: 1510px;
 }
 #tail_out{   
-    margin: 0 auto
+    margin: 0 auto;
+    width: auto;
 }
 .box_tail_out{
     display: flex;
