@@ -4,7 +4,7 @@
     flex-direction: column;
     justify-content: flex-start;
     flex: 1 1 auto;
-    width: auto;
+    width: 1920px;
     height:300px ;
 }
 .box_in_title{
@@ -104,7 +104,7 @@
     justify-content: flex-start;
 }
 #box_rigth{
-    widows: 20%;
+    widows: 384px;
 }
 .box_conetnt_in{
     display: flex;
@@ -215,10 +215,14 @@
 }
 #tail{
     background: dodgerblue;
-    margin: 0 auto
+    margin: 0 auto;
+    width: 1920px;
+    -webkit-background-size: cover;
+    
 }
 #tail_out{   
-    margin: 0 auto
+    margin: 0 auto;
+    width: auto;
 }
 .box_tail_out{
     display: flex;
