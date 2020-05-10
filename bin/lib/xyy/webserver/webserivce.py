@@ -1,6 +1,8 @@
 #!/usr/bin/python
 import sys
 import re
+#from frontpage.get_frontpage import *
+
 
 class WebServer:
     def __init__(self,loglevel):
@@ -21,7 +23,7 @@ class WebServer:
 
     def Retrun_response(self,file_name):
         #Here transsfer front page to a normal page
-        file_name=file_name if file_name !='/' else '/main.html'
+        file_name=file_name if file_name !='/' else '/frontpage.html'
         response=""
        
         if re.search(r'jpge$|jpg$|png$|bmp$|webp$|ico$',file_name,re.M|re.I):#Picture
@@ -34,20 +36,31 @@ class WebServer:
             response=self.process_fontfile(file_name)
         elif(r'js$',file_name,re.M|re.I):
             response=self.process_javascript(file_name)
+        elif(r'txt$',file_name,re.M|re.I):
+            response=self.process_txt(file_name)
         return response
 
     def process_html(self,filename):
         response_start_line=""
         response_body=""
-        try:
-            file=open('../src/html'+filename,'rb')
-            #print('../src/html'+filename)
-            response_body=file.read()
-            file.close()
+        if filename=="/frontpage.html":
+            sys.path.insert(1,'../src/python/frontpage')
+            module= __import__('get_frontpage')
+            a=module.get_frontpage()
+            fullpage=a.generate_full_page()
             response_start_line=self.http_ok_html
-        except IOError:
-            response_start_line = self.http_fail_html
-            response_body=bytes('<h1>Error 404 Page Lost</h1>',"gb2312")
+            response_body=bytes(fullpage,"gb2312")
+        else:
+            try:
+                file=open('../src/html'+filename,'rb')
+                #print('../src/html'+filename)
+                response_body=file.read()
+                file.close()
+                response_start_line=self.http_ok_html
+            except IOError:
+                response_start_line = self.http_fail_html
+                response_body=bytes('<h1>Error 404 Page Lost</h1>',"gb2312")
+        print(response_body)
         return bytes(response_start_line,"gb2312") + response_body
         
     def process_image(self,filename):
@@ -62,6 +75,20 @@ class WebServer:
             response_start_line = self.http_fail_image
             response_body=bytes('',"gb2312")
         return bytes(response_start_line,"gb2312") + response_body
+
+    def process_txt(self,filename):
+        response_start_line=""
+        response_body=""
+        try:
+            file=open('../src'+filename,'rb')
+            response_body=file.read()
+            file.close()
+            response_start_line=self.http_ok_image
+        except IOError:
+            response_start_line = self.http_fail_image
+            response_body=bytes('',"gb2312")
+        return bytes(response_start_line,"gb2312") + response_body
+
 
     def process_css(self,filename):
         response_start_line=""
@@ -135,6 +162,5 @@ class WebServer:
             response=self.Retrun_response(request_file)
             client_socket.send(response)
             client_socket.close()
-
 
         return 1
