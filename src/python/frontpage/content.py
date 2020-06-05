@@ -129,18 +129,7 @@ class get_content:
                 <div class="box_icon">
                     <img src="../res/my.png" height="180px">
                 </div>
-                <div class="login_bar_out" id="login_bar_out">
-                    <form method="POST">
-                        <div id="login_bar">
-                            <input type="text" name="login_username" style="width: 160px;" placeholder="用户名" required="">
-                        </div>
-                        <div id="login_bar">
-                            <input type="text" name="login_password" style="width: 160px;" placeholder="密码" required="">
-                        </div>
-                        <div id="login_bar">
-                            <button  type="submit" id="login_botton"  >登录</button>
-                        </div>
-                    </form>
+                <div class="login_bar_out" id="login_bar_out onload="loadXMLDoc('./frontpage_login.html')">
                 </div>
             </div>
         </div>"""
@@ -152,7 +141,8 @@ class get_content:
     def body_content(self):
         body_begin="""   <body>
         <script src="../js/chage_pixel.js"></script>
-        <script src="../js/onclick.js"></script>"""
+        <script src="../js/onclick.js"></script>
+        <script src="../js/login.js"></script>"""
         body_end="</body>"
         body_head=self.content_head()
         body_middle_left=self.content_left()

@@ -1,4 +1,4 @@
-window.onload=function chage_pixel(){
+function change_pixel(){
     var curr_screen_width=document.body.clientWidth
     if(curr_screen_width>1519){
         curr_screen_width=(curr_screen_width-1519)/2

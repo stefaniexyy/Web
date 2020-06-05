@@ -1,39 +1,66 @@
 <html>
-<head>
-<script type="text/javascript">
-var xmlhttp;
-function loadXMLDoc(url){
-    xmlhttp=null;
-    if (window.XMLHttpRequest){// code for Firefox, Opera, IE7, etc.
-        xmlhttp=new XMLHttpRequest();
-    }else if (window.ActiveXObject){// code for IE6, IE5
-        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-    }
-    if (xmlhttp!=null){
-        xmlhttp.onreadystatechange=state_Change;
-        xmlhttp.open("GET",url,true);
-        xmlhttp.send(null);
-  }else{
-    alert("Your browser does not support XMLHTTP.");
-  }
-}
+  <head>
+    <meat http-equiv="Content-Type" content="text/html" charset="gb2312"></meat>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.staticfile.org/vue-resource/1.5.1/vue-resource.min.js"></script>
 
-function state_Change(){
-    if (xmlhttp.readyState==4){// 4 = "loaded"
-        if (xmlhttp.status==200){// 200 = "OK"
-            document.getElementById('T1').innerHTML=xmlhttp.responseText;
-        }else{
-            alert("Problem retrieving data:" + xmlhttp.statusText);
-    }
-  }
-}
-</script>
-</head>
+  </head>
+  <body>
+    <div id="loginDiv">
+      <div v-if="login_result==='' || login_result==='fail'" >
+        <form id="vue1">
+          <div id="login_bar">
+              <input type="text" v-model="username" name="login_username" style="width: 160px;" placeholder="ÓÃ»§Ãû" required="">
+          </div>
+          <div id="login_bar">
+              <input type="text" v-model="password" name="login_password" style="width: 160px;" placeholder="ÃÜÂë" required="">
+          </div>
+          <div id="login_bar">
+              <button type='button' id="login_botton" @click="submit">µÇÂ¼</button>
+              <button type='button' id="jump_register_botton" @click="jump_register" >×¢²á</button>
+          </div>
+          <div v-if="login_result==='fail'" style="color: red;">
+            login fail
+          </div>
+        </form> 
+      </div>
+      <div v-if="login_result==='succ'">
+        <div id="login_bar">
+          username is {{username}}</br>
+          login_status is {{login_result}}
+        </div>
+      </div>                         
+    </div>
+    <script>
+      var msg={username:'',password:'',login_result:''}
+      var myvue=new Vue(
+        {
+          el:"#loginDiv",
+          data:msg,
+          http:{
+            root:'192.168.1.129/',
+          },
+          methods:{
+            submit:function(){
+              this.$http.post(('frontpage.html/login_request'),{username:msg.username,password:msg.password},{emlateJSON:false}).then(
+                response=>{
+                  this.grouplist=response.body;
+                  msg.login_result=response.body.login_result
+                  console.log(msg.login_result)
+                },respose=>{
+                  consle.log(respose);
+                  alter("Fail")
+                }
+              );
+            },
+            jump_register:function(){
 
-<body onload="loadXMLDoc('../text/test_xmlhttp.txt')">
-    <div id="T1" style="border:1px solid black;height:40;width:300;padding:5">
-    </div><br />
-    <button onclick="loadXMLDoc('../text/test_xmlhttp2.txt')">Click</button>
-</body>
+            }
+          }
+        }
+      )
 
+    </script>
+    
+  </body>
 </html>
