@@ -7,8 +7,9 @@ from xyy.webserver.basic_tool import *
 
 
 
+
 class WebServer:
-    def __init__(self,loglevel):
+    def __init__(self,loglevel,db):
         self.http_ok_image="HTTP/1.1 200 OK\r\nContent-Type: image/jpg\r\n\r\n"
         self.http_ok_css="HTTP/1.1 200 OK\r\nContent-Type: text/css\r\n\r\n"
         self.http_ok_html="HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n\r\n"
@@ -19,6 +20,7 @@ class WebServer:
         self.http_fail_css="HTTP/1.1 404 Not Found\r\nContent-Type: text/css\r\n\r\n"
         self.http_fail_js="HTTP/1.1 404 Not Found\r\nContent-Type: application/javascript\r\n\r\n"
         self.loglevel=loglevel
+        self.db=db
 
 
     def test(self):
@@ -30,13 +32,13 @@ class WebServer:
         file_name=file_name if file_name !='/' else '/frontpage.html'
         response=""
         print('file is'+file_name[-4:])
-        if file_name[-4:]=='jpge' or file_name[-4:]=='.jpg' or file_name[-4:]=='.png' or file_name[-4:]=='.bmp' or file_name[-4:]=='.ico':#Picture
+        if file_name[-4:].lower()=='jpge' or file_name[-4:].lower()=='.jpg' or file_name[-4:].lower()=='.png' or file_name[-4:].lower()=='.bmp' or file_name[-4:].lower()=='.ico':#Picture
             response=self.process_image(file_name)
         elif file_name[-4:]=='.css':#CSS
             response=self.process_css(file_name)
         elif file_name[-4:]=='html' or  file_name[-4:]=='.html':#html
             response=self.process_html(file_name)
-        elif file_name[-4:]=='.otf' or  file_name[-4:]=='otf':
+        elif file_name[-4:]=='.otf' or  file_name[-4:]=='.ttf':
             response=self.process_fontfile(file_name)
         elif file_name[-3:]=='.js':
             response=self.process_javascript(file_name)
@@ -53,7 +55,7 @@ class WebServer:
         print(arr_rqeuest[2])
         sys.path.insert(1,'../src/python/'+arr_rqeuest[2][0:-5])
         module= __import__('get_'+arr_rqeuest[2][0:-5])
-        post_function=module.post()#m每个网页都要实现一个post类    
+        post_function=module.post(self.db)#m每个网页都要实现一个post类    
         if hasattr(post_function,arr_rqeuest[3]):
             fun=getattr(post_function,arr_rqeuest[3])
             response=bytes("HTTP/1.1 200 OK\r\nContent-Type: text/json\r\n\r\n"+fun(parameter),"gb2312")
