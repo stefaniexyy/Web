@@ -1,66 +1,29 @@
 <html>
   <head>
-    <meat http-equiv="Content-Type" content="text/html" charset="gb2312"></meat>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="https://cdn.staticfile.org/vue-resource/1.5.1/vue-resource.min.js"></script>
-
-  </head>
-  <body>
-    <div id="loginDiv">
-      <div v-if="login_result==='' || login_result==='fail'" >
-        <form id="vue1">
-          <div id="login_bar">
-              <input type="text" v-model="username" name="login_username" style="width: 160px;" placeholder="用户名" required="">
-          </div>
-          <div id="login_bar">
-              <input type="text" v-model="password" name="login_password" style="width: 160px;" placeholder="密码" required="">
-          </div>
-          <div id="login_bar">
-              <button type='button' id="login_botton" @click="submit">登录</button>
-              <button type='button' id="jump_register_botton" @click="jump_register" >注册</button>
-          </div>
-          <div v-if="login_result==='fail'" style="color: red;">
-            login fail
-          </div>
-        </form> 
-      </div>
-      <div v-if="login_result==='succ'">
-        <div id="login_bar">
-          username is {{username}}</br>
-          login_status is {{login_result}}
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="css/index.css"/>
+</head>
+<body>
+    <div class="all">
+        <div class="a">
+            <div class="b">
+            </div>
+            <div class="c">
+                <ul>
+                    <li>
+                        <a href="#">主站</a>
+                    </li>
+                    <li>
+                        <a href="#">画友</a>
+                    </li>
+                    <li>
+                        <a href="#">游戏中心</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-      </div>                         
     </div>
-    <script>
-      var msg={username:'',password:'',login_result:''}
-      var myvue=new Vue(
-        {
-          el:"#loginDiv",
-          data:msg,
-          http:{
-            root:'192.168.1.129/',
-          },
-          methods:{
-            submit:function(){
-              this.$http.post(('frontpage.html/login_request'),{username:msg.username,password:msg.password},{emlateJSON:false}).then(
-                response=>{
-                  this.grouplist=response.body;
-                  msg.login_result=response.body.login_result
-                  console.log(msg.login_result)
-                },respose=>{
-                  consle.log(respose);
-                  alter("Fail")
-                }
-              );
-            },
-            jump_register:function(){
-
-            }
-          }
-        }
-      )
-
-    </script>
-    
-  </body>
+    <div class="d"></div>
+</body>
 </html>

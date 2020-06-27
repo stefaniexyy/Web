@@ -6,7 +6,9 @@ class get_content:
 
     def content_head(self):
         content_head="""        <div class="box_out_title" id="head">
-            <div class="box_in_title_K" id="title" >
+            <div class="box_in_title_glass" id="title" >
+            </div>
+            <div class="box_in_title_bar" id="title">
                 <div class="box_in_title_mid">
                     <div class="box_in_title_inner" id="title_small">
                         <title3>差旅随笔  </title3>
@@ -21,6 +23,9 @@ class get_content:
                         <title3>关于  </title3>
                     </div>    
                 </div>          
+            </div>
+            <div class="box_in_title" style="height:80px">
+
             </div>
             <div class="box_in_title" id="title"  >
                 <title1>技术试验田<br></title1>
@@ -129,7 +134,70 @@ class get_content:
                 <div class="box_icon">
                     <img src="../res/my.png" height="180px">
                 </div>
-                <div class="login_bar_out" id="login_bar_out onload="loadXMLDoc('./frontpage_login.html')">
+               <div class="login_bar_out" id="login_bar_out" style="height: auto;">
+                    <div id="loginDiv" >
+                        <form>
+                            <div v-if="login_result==='' || login_result==='fail'">
+                                <div id="login_bar">
+                                    <input type="text" v-model="username" name="login_username" style="width: 160px;" placeholder="用户名" required="">
+                                </div>
+                                <div id="login_bar">
+                                    <input type="password" v-model="password" name="login_password" style="width: 160px;" placeholder="密码" required="">
+                                </div>
+                                <div id="login_bar">
+                                    <button type='button' id="login_botton"  @click="submit">登录</button>
+                                </div>
+                                <div id="login_bar">
+                                    <button type='button' id="login_botton"  @click="register">注册</button>
+                                </div>
+                            </div>
+                            <div v-if="login_result==='fail'" style="color: red;" id="login_bar">
+                                login fail
+                            </div>
+                            <div v-if="login_result==='succ'">
+                                <div id="login_bar">
+                                    用户名  ：{{username}}
+                                </div>
+                                <div id="login_bar">
+                                    当前角色：{{role}}
+                                </div>
+                                <div id="login_bar">
+                                    <button type='button' id="login_botton" @click="login_out">退出</button>
+                                </div>
+                            </div>
+                            <div v-if="login_result==='regi'">
+                                <form>
+                                    <div v-if="regi_fail_reason !=='succ'">
+                                        <div id="login_bar">
+                                            <input type="text" v-model="username" name="login_username" style="width: 160px;" placeholder="用户名" required>
+                                        </div>
+                                        <div id="login_bar">
+                                            <input type="password" v-model="password" name="password" style="width: 160px;" placeholder="密码" required>
+                                        </div>
+                                        <div id="login_bar">
+                                            <input type="password" v-model="confirm_password" name="confirm_password" style="width: 160px;" placeholder="确认密码" required>
+                                        </div>
+                                        <div id="login_bar">
+                                            <input type="text" v-model="email" name="email" style="width: 160px;" placeholder="邮箱" required>
+                                        </div>
+                                        <div id="login_bar">
+                                            <button type='button' id="login_botton"  @click="confirm_register">注册</button>
+                                        </div>
+                                        <div id="login_bar">
+                                            <button type='button' id="login_botton" @click="login_out">返回</button>
+                                        </div>
+                                        <div v-if="regi_fail_reason!=='' && regi_fail_reason!=='succ'" style="color: red;" id="login_bar">
+                                            {{regi_fail_reason}}
+                                        </div>
+                                    </div>
+                                    <div  v-if="regi_fail_reason ==='succ'">
+                                        注册成功,正在返回...
+                                    </div>                                   
+                                </form>
+                            </div>
+                        </form>                           
+                    </div>
+                    <script src="../js/frontpage_login.js"></script>
                 </div>
             </div>
         </div>"""
@@ -140,9 +208,10 @@ class get_content:
 
     def body_content(self):
         body_begin="""   <body>
+        <script src="../js/vue.js"></script>
+        <script src="../js/vue-resource.js"></script>
         <script src="../js/chage_pixel.js"></script>
-        <script src="../js/onclick.js"></script>
-        <script src="../js/login.js"></script>"""
+        <script src="../js/onclick.js"></script>"""
         body_end="</body>"
         body_head=self.content_head()
         body_middle_left=self.content_left()

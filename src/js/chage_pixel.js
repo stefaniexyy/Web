@@ -1,3 +1,6 @@
+window.onload =function load_all(){
+    change_pixel()
+}
 function change_pixel(){
     var curr_screen_width=document.body.clientWidth
     if(curr_screen_width>1519){

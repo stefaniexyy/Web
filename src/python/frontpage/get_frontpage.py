@@ -7,6 +7,7 @@ sys.path.append('.')
 from head import *
 from content import *
 from tail import *
+import pymysql
 
 class get_page:
         def generate_full_page(self):
@@ -18,14 +19,33 @@ class get_page:
 
         
 class post:
+        def __init__(self,db):
+                self.db=db
+
         def login_request(self,content):
-                print('content is:'+content)
                 content_json=json.loads(content)
-                if content_json['username']=='sysadmin' and content_json['password']=='11':
-                        resulut='{"login_result":"succ"}'
+                cursor=self.db.cursor()
+                cursor.execute("select PROLE from SYS_USER where user_name=\'"+content_json['username']+"\' and password=\'"+content_json['password']+"\'")
+                data = cursor.fetchone()
+                if data is None:
+                        result='{"login_result":"fail"}'
                 else:
-                        resulut='{"login_result":"fail"}'
-                return resulut
+                        result='{"login_result":"succ","role":"'+data[0]+'"}'
+                return result
+        
+        def login_register(self,content):
+                content_json=json.loads(content)
+                cursor=self.db.cursor()
+                cursor.execute("select count(1) from SYS_USER where user_name=\'"+content_json['username']+"\'")
+                data= cursor.fetchone()[0]
+                if data==0:
+                        #print("insert into SYS_USER values(\'"+content_json['username']+"\',\'"+content_json['password']+"\',+\'"+content_json['email']+"\',\'normal\',\'\')")
+                        cursor.execute("insert into SYS_USER values(\'"+content_json['username']+"\',\'"+content_json['password']+"\',\'normal\',\'"+content_json['email']+"\',null)")
+                        self.db.commit()
+                        result='{"regi_fail_reason":"succ"}'
+                else:
+                        result='{"regi_fail_reason":"Error_User_Exists"}'
+                return result
 
 
 #a=get_frontpage()
