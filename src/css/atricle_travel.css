@@ -1,0 +1,90 @@
+.title{
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+}
+#title{
+    height: 300px;
+    width:1520px;
+    position: relative;
+    top: -10px;
+}
+#title_head_glass{
+    height: 40px;
+    width:1520px;   
+    filter:blur(40px);
+}
+#titel_head{
+    color: black;
+    position: absolute;
+    background-color:rgba(255, 255, 255, 0.3);
+    left: 0;
+    top: 0;
+    height: 40px;
+    width:1520px;
+    font-family: Microsoft Yahei;
+}
+#memu #li_lv1{
+    list-style-type:disc;
+    display: block;
+    padding:0 15;
+    float:left;
+}
+#li_lv1{
+    position: relative;
+}
+#memu{
+    position: absolute;
+    left:580;
+    top:-5;
+}
+
+#ul_lv2{
+    display: none;
+    position: absolute;
+    min-width: 120px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+#li_lv1:hover #ul_lv2 {
+    display: block;
+    background-color:rgba(255, 255, 255, 0.3);
+    left:-20;
+    list-style-type: none;
+}
+
+#li_lv2{
+    display: block;
+    list-style-position: outside;
+    left: -100;
+    line-height: 30px;
+    padding-left: 20px;
+}
+#li_lv2:hover{
+    background-color:rgba(255, 255, 255, 0.5);
+    display: block;
+    left: -100;
+    line-height: 30px;
+    padding-left: 20px;
+}
+
+#title_name{
+    height: auto;
+    width: auto;
+    background-color:rgba(3, 3, 3, 0.6);
+    text-align: center;
+    vertical-align: middle;
+    position:absolute;
+    top: 200px;
+    left:800px;
+    color: white;
+    font-family: zh_title;
+    font-size: 30px;
+}
+
+
+@font-face{
+    font-family:zh_title;
+    src:url('../font/zh_lixukemaobi.ttf');
+
+}
